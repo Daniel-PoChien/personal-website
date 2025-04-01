@@ -52,7 +52,7 @@ npm run dev
 npm start
 ```
 
-應用將在 http://localhost:3000 運行（除非在.env文件中指定了其他端口）。
+應用將在 http://localhost:3003 運行（除非在.env文件中指定了其他端口）。
 
 ## 部署
 
@@ -60,4 +60,4 @@ npm start
 
 ## 聯繫
 
-如有任何問題或建議，請聯繫[your-email@example.com](mailto:your-email@example.com)。
+如有任何問題或建議，請聯繫[danielcheng1022@gmail.com](mailto:danielcheng1022@gmail.com)。
