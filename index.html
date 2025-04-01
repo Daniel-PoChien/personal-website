@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel的個人主頁</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="public/css/styles.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body class="bg-gray-50 text-gray-800 transition-colors duration-300" id="body">
+    <!-- 導航欄 -->
+    <nav class="sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-md transition-colors duration-300">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-teal-600 dark:text-teal-400">Daniel</a>
+            <div class="flex items-center">
+                <div class="hidden md:flex space-x-8 mr-6">
+                    <a href="#about" class="hover:text-teal-600 dark:hover:text-teal-400 dark:text-white transition duration-300">關於我</a>
+                    <a href="#skills" class="hover:text-teal-600 dark:hover:text-teal-400 dark:text-white transition duration-300">技能</a>
+                    <a href="#projects" class="hover:text-teal-600 dark:hover:text-teal-400 dark:text-white transition duration-300">項目</a>
+                    <a href="portfolio.html" class="hover:text-teal-600 dark:hover:text-teal-400 dark:text-white transition duration-300">作品集</a>
+                    <a href="blog.html" class="hover:text-teal-600 dark:hover:text-teal-400 dark:text-white transition duration-300">博客</a>
+                    <a href="#contact" class="hover:text-teal-600 dark:hover:text-teal-400 dark:text-white transition duration-300">聯繫我</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-4 border-l pl-4 border-gray-300 dark:border-gray-700">
+                    <button id="darkModeToggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" aria-label="切換暗黑模式">
+                        <i class="fas fa-moon text-gray-600 dark:text-yellow-300 dark:hidden"></i>
+                        <i class="fas fa-sun text-yellow-300 hidden dark:inline"></i>
+                    </button>
+                    <div class="flex items-center space-x-2">
+                        <button id="lang-zh" class="text-sm px-2 py-1 rounded-md bg-teal-500 text-white" aria-label="切換到中文">中文</button>
+                        <button id="lang-en" class="text-sm px-2 py-1 rounded-md bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-white" aria-label="Switch to English">English</button>
+                    </div>
+                </div>
+                <button class="md:hidden focus:outline-none dark:text-white" aria-label="開啟導航選單">
+                    <i class="fas fa-bars text-teal-600 dark:text-teal-400 text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄區域 -->
+    <header id="about" class="relative overflow-hidden">
+        <div class="gradient-bg absolute inset-0 opacity-20"></div>
+        <div class="container mx-auto px-6 py-24 flex flex-col md:flex-row items-center justify-between relative z-10">
+            <div class="md:w-1/2 text-center md:text-left mb-12 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">你好，我是 <span class="text-teal-600">Daniel</span></h1>
+                <p class="text-xl md:text-2xl text-gray-600 mb-8">一名喜好新挑戰的開發者和創作者</p>
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <a href="#projects" class="bg-white text-black px-6 py-3 rounded-lg shadow-lg hover:bg-gray-200 transition duration-300">查看我的作品</a>
+                    <a href="#contact" class="bg-white text-black  px-6 py-3 rounded-lg shadow-lg hover:bg-gray-200 transition duration-300">聯繫我</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="w-64 h-64 rounded-full overflow-hidden border-4 border-white shadow-xl">
+                    <img src="public/images/profile_pic.jpg" alt="Daniel的頭像" class="w-full h-full object-cover" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 關於我 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 relative">
+                <span class="relative z-10">關於我</span>
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-1 w-24 bg-teal-400 rounded-full"></span>
+            </h2>
+            <div class="max-w-3xl mx-auto text-center text-lg text-gray-600 leading-relaxed">
+                <p class="mb-6">我是一名充滿激情的開發者，熱愛探索新技術和面對挑戰。在不斷學習的過程中尋找樂趣，通過創造性解決問題來獲得成就感。</p>
+                <p>無論是開發應用程序、設計用戶體驗，還是優化性能，我都致力於提供高質量的解決方案。我相信技術的力量可以改變人們的生活方式，很高興能成為這個變革的一部分。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技能 -->
+    <section id="skills" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 relative">
+                <span class="relative z-10">我的技能</span>
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-1 w-24 bg-teal-400 rounded-full"></span>
+            </h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 max-w-4xl mx-auto mb-16">
+                <div class="skill-icon flex flex-col items-center transition duration-300 p-4 rounded-lg hover:bg-white hover:shadow-md">
+                    <i class="fab fa-html5 text-5xl text-orange-500 mb-3"></i>
+                    <span class="font-medium">HTML5</span>
+                </div>
+                <div class="skill-icon flex flex-col items-center transition duration-300 p-4 rounded-lg hover:bg-white hover:shadow-md">
+                    <i class="fab fa-css3-alt text-5xl text-blue-500 mb-3"></i>
+                    <span class="font-medium">CSS3</span>
+                </div>
+                <div class="skill-icon flex flex-col items-center transition duration-300 p-4 rounded-lg hover:bg-white hover:shadow-md">
+                    <i class="fab fa-js text-5xl text-yellow-500 mb-3"></i>
+                    <span class="font-medium">JavaScript</span>
+                </div>
+                <div class="skill-icon flex flex-col items-center transition duration-300 p-4 rounded-lg hover:bg-white hover:shadow-md">
+                    <i class="fab fa-react text-5xl text-blue-400 mb-3"></i>
+                    <span class="font-medium">React</span>
+                </div>
+                <div class="skill-icon flex flex-col items-center transition duration-300 p-4 rounded-lg hover:bg-white hover:shadow-md">
+                    <i class="fab fa-node-js text-5xl text-green-600 mb-3"></i>
+                    <span class="font-medium">Node.js</span>
+                </div>
+                <div class="skill-icon flex flex-col items-center transition duration-300 p-4 rounded-lg hover:bg-white hover:shadow-md">
+                    <i class="fab fa-python text-5xl text-blue-600 mb-3"></i>
+                    <span class="font-medium">Python</span>
+                </div>
+                <div class="skill-icon flex flex-col items-center transition duration-300 p-4 rounded-lg hover:bg-white hover:shadow-md">
+                    <i class="fas fa-database text-5xl text-gray-600 mb-3"></i>
+                    <span class="font-medium">數據庫</span>
+                </div>
+                <div class="skill-icon flex flex-col items-center transition duration-300 p-4 rounded-lg hover:bg-white hover:shadow-md">
+                    <i class="fas fa-mobile-alt text-5xl text-teal-600 mb-3"></i>
+                    <span class="font-medium">響應式設計</span>
+                </div>
+                <div class="skill-icon flex flex-col items-center transition duration-300 p-4 rounded-lg hover:bg-white hover:shadow-md">
+                    <i class="fas fa-code text-5xl text-gray-800 mb-3"></i>
+                    <span class="font-medium">C語言</span>
+                </div>
+            </div>
+            
+            <!-- 技能熟練度圖表 -->
+            <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-8">
+                <h3 class="text-2xl font-bold mb-6 text-center">技能熟練度</h3>
+                <div class="mb-10">
+                    <canvas id="skillChart" height="300"></canvas>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium">HTML/CSS</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium">JavaScript</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium">React</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium">Node.js</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium">Python</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium">C語言</span>
+                            <span>65%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 65%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 項目 -->
+    <section id="projects" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 relative">
+                <span class="relative z-10">我的項目</span>
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-1 w-24 bg-teal-400 rounded-full"></span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-60 overflow-hidden">
+                        <img src="public/images/business.jpg" alt="項目1" class="w-full h-full object-cover object-center transform hover:scale-105 transition duration-500" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">電子商務平台</h3>
+                        <p class="text-gray-600 mb-4">使用React和Node.js開發的全棧電子商務解決方案，包含支付集成和庫存管理。</p>
+                        <div class="flex space-x-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">React</span>
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Node.js</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">MongoDB</span>
+                        </div>
+                        <a href="portfolio.html" class="text-teal-600 hover:text-teal-800 font-medium flex items-center">
+                            查看詳情 <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-60 overflow-hidden">
+                        <img src="public/images/data visulization.jpg" alt="項目2" class="w-full h-full object-cover object-center transform hover:scale-105 transition duration-500" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">數據可視化儀表板</h3>
+                        <p class="text-gray-600 mb-4">為企業客戶設計的實時數據分析和可視化解決方案，幫助快速做出決策。</p>
+                        <div class="flex space-x-2 mb-4">
+                            <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">JavaScript</span>
+                            <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">D3.js</span>
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded">Flask</span>
+                        </div>
+                        <a href="portfolio.html" class="text-teal-600 hover:text-teal-800 font-medium flex items-center">
+                            查看詳情 <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-60 overflow-hidden">
+                        <img src="public/images/tracker.jpg" alt="項目3" class="w-full h-full object-cover object-center transform hover:scale-105 transition duration-500" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">健康追踪應用</h3>
+                        <p class="text-gray-600 mb-4">移動優先的健康和健身追踪應用，幫助用戶設定目標並監控進展。</p>
+                        <div class="flex space-x-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">React Native</span>
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Firebase</span>
+                            <span class="bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded">GraphQL</span>
+                        </div>
+                        <a href="portfolio.html" class="text-teal-600 hover:text-teal-800 font-medium flex items-center">
+                            查看詳情 <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 text-center">
+                <a href="portfolio.html" class="inline-block bg-gray-200 hover:bg-gray-300 text-gray-800 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 font-medium py-3 px-8 rounded-lg transition duration-300">
+                    查看更多項目 <i class="fas fa-external-link-alt ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 聯繫方式 -->
+    <section id="contact" class="py-16 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 relative">
+                <span class="relative z-10 dark:text-white">聯繫我</span>
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-1 w-24 bg-teal-400 rounded-full"></span>
+            </h2>
+            <div class="max-w-4xl mx-auto p-8 bg-white dark:bg-gray-800 shadow-md rounded-lg transition-colors duration-300">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white">讓我們取得聯繫</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-8">無論您有任何問題、建議或合作想法，都歡迎通過以下方式聯繫我。</p>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 p-2 bg-teal-100 dark:bg-teal-800 rounded-full">
+                                    <i class="fas fa-envelope text-lg text-teal-600 dark:text-teal-400"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-semibold text-gray-800 dark:text-white">電子郵箱</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">danielcheng1022@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 p-2 bg-teal-100 dark:bg-teal-800 rounded-full">
+                                    <i class="fas fa-map-marker-alt text-lg text-teal-600 dark:text-teal-400"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-semibold text-gray-800 dark:text-white">地點</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">台中市，台灣</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 p-2 bg-teal-100 dark:bg-teal-800 rounded-full">
+                                    <i class="fas fa-globe text-lg text-teal-600 dark:text-teal-400"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-lg font-semibold text-gray-800 dark:text-white">社交媒體</h4>
+                                    <div class="flex mt-2 space-x-4">
+                                        <a href="https://www.linkedin.com/in/chengdaniel1022/"" class="text-gray-600 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400">
+                                            <i class="fab fa-linkedin text-xl"></i>
+                                        </a>
+                                        <a href="https://github.com/Daniel-PoChien" class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">
+                                            <i class="fab fa-github text-xl"></i>
+                                        </a>
+                                        <a href="https://twitter.com" class="text-gray-600 hover:text-blue-400 dark:text-gray-300 dark:hover:text-blue-300">
+                                            <i class="fa-brands fa-x-twitter"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <form id="contactForm" class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-gray-700 dark:text-gray-300 mb-2">姓名</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-700 dark:text-gray-300 mb-2">電子郵箱</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white" required>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-gray-700 dark:text-gray-300 mb-2">訊息</label>
+                                <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white" required></textarea>
+                            </div>
+                            
+                            <!-- reCAPTCHA v2 -->
+                            <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
+                            
+                            <div>
+                                <button type="submit" class="w-full bg-blue-600 hover:bg-teal-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300 shadow-md hover:shadow-lg transform hover:translate-y-[-2px]">
+                                    發送消息
+                                </button>
+                            </div>
+                        </form>
+                        <div id="form-message" class="hidden mt-4 text-center"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁腳 -->
+    <footer class="bg-gray-800 dark:bg-gray-900 text-white py-8 transition-colors duration-300">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="index.html" class="text-2xl font-bold text-white">Daniel</a>
+                    <p class="mt-2 text-gray-400">© 2025 版權所有</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#about" class="hover:text-teal-400 transition duration-300">關於我</a>
+                    <a href="#skills" class="hover:text-teal-400 transition duration-300">技能</a>
+                    <a href="#projects" class="hover:text-teal-400 transition duration-300">項目</a>
+                    <a href="portfolio.html" class="hover:text-teal-400 transition duration-300">作品集</a>
+                    <a href="blog.html" class="hover:text-teal-400 transition duration-300">博客</a>
+                    <a href="#contact" class="hover:text-teal-400 transition duration-300">聯繫我</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript 文件 -->
+    <script src="public/js/main.min.js"></script>
+    <script>
+        // 初始化設定
+        document.addEventListener('DOMContentLoaded', function() {
+            // 檢查URL參數
+            const urlParams = new URLSearchParams(window.location.search);
+            const langParam = urlParams.get('lang');
+            
+            // 如果URL中有語言參數，設置語言
+            if (langParam === 'en') {
+                localStorage.setItem('preferredLanguage', 'en');
+                window.location.href = 'index_en.html';
+                return;
+            }
+            
+            // 檢查localStorage中的語言偏好
+            const storedLang = localStorage.getItem('preferredLanguage');
+            if (storedLang === 'en') {
+                window.location.href = 'index_en.html';
+                return;
+            }
+            
+            // 設置當前語言選擇
+            localStorage.setItem('preferredLanguage', 'zh');
+            
+            // 暗黑模式切換
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            
+            // 檢查本地存儲中的暗黑模式偏好
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                document.documentElement.classList.add('dark');
+            }
+            
+            darkModeToggle.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark');
+                if (document.documentElement.classList.contains('dark')) {
+                    localStorage.setItem('darkMode', 'enabled');
+                } else {
+                    localStorage.setItem('darkMode', 'disabled');
+                }
+            });
+            
+            // 語言切換功能
+            const zhButton = document.getElementById('lang-zh');
+            const enButton = document.getElementById('lang-en');
+            
+            zhButton.addEventListener('click', function() {
+                localStorage.setItem('preferredLanguage', 'zh');
+                window.location.href = 'index.html';
+            });
+            
+            enButton.addEventListener('click', function() {
+                localStorage.setItem('preferredLanguage', 'en');
+                window.location.href = 'index_en.html';
+            });
+
+            // 導航鏈接添加語言參數
+            const portfolioLinks = document.querySelectorAll('a[href="portfolio.html"]');
+            const blogLinks = document.querySelectorAll('a[href="blog.html"]');
+            
+            // 當前語言
+            const currentLang = localStorage.getItem('preferredLanguage') || 'zh';
+            
+            // 更新作品集鏈接
+            portfolioLinks.forEach(link => {
+                link.href = `portfolio.html?lang=${currentLang}`;
+            });
+            
+            // 更新博客鏈接
+            blogLinks.forEach(link => {
+                link.href = `blog.html?lang=${currentLang}`;
+            });
+        });
+    </script>
+
+    <!-- 表單提交處理 -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 檢查reCAPTCHA
+            const recaptchaResponse = grecaptcha.getResponse();
+            if (!recaptchaResponse) {
+                const formMessage = document.getElementById('form-message');
+                formMessage.classList.remove('hidden');
+                formMessage.className = 'mt-4 text-center text-red-600 bg-red-100 p-3 rounded';
+                formMessage.textContent = '請完成reCAPTCHA驗證';
+                return;
+            }
+            
+            const formData = new FormData(this);
+            // 添加reCAPTCHA響應到表單數據
+            formData.append('g-recaptcha-response', recaptchaResponse);
+            
+            const formMessage = document.getElementById('form-message');
+            const submitButton = this.querySelector('button[type="submit"]');
+            
+            // 禁用表單提交按鈕
+            submitButton.disabled = true;
+            submitButton.innerHTML = '發送中...';
+            
+            fetch('/contact.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                formMessage.classList.remove('hidden');
+                
+                if (data.success) {
+                    // 成功信息
+                    formMessage.className = 'mt-4 text-center text-green-600 bg-green-100 p-3 rounded';
+                    formMessage.textContent = data.message;
+                    
+                    // 重置表單
+                    document.getElementById('contactForm').reset();
+                    // 重置reCAPTCHA
+                    grecaptcha.reset();
+                } else {
+                    // 錯誤信息
+                    formMessage.className = 'mt-4 text-center text-red-600 bg-red-100 p-3 rounded';
+                    formMessage.textContent = data.errors.join(', ');
+                }
+                
+                // 恢復提交按鈕
+                submitButton.disabled = false;
+                submitButton.innerHTML = '發送消息';
+            })
+            .catch(error => {
+                formMessage.classList.remove('hidden');
+                formMessage.className = 'mt-4 text-center text-red-600 bg-red-100 p-3 rounded';
+                formMessage.textContent = '發送請求時出錯，請稍後再試。';
+                
+                // 恢復提交按鈕
+                submitButton.disabled = false;
+                submitButton.innerHTML = '發送消息';
+            });
+        });
+    </script>
+</body>
+</html>

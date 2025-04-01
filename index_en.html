@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel's Personal Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="public/css/styles.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body class="bg-gray-50 text-gray-800 transition-colors duration-300 en" id="body">
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-md transition-colors duration-300">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index_en.html" class="text-2xl font-bold text-teal-600 dark:text-teal-400">Daniel</a>
+            <div class="flex items-center">
+                <div class="hidden md:flex space-x-8 mr-6">
+                    <a href="#about" class="hover:text-teal-600 dark:hover:text-teal-400 dark:text-white transition duration-300">About</a>
+                    <a href="#skills" class="hover:text-teal-600 dark:hover:text-teal-400 dark:text-white transition duration-300">Skills</a>
+                    <a href="#projects" class="hover:text-teal-600 dark:hover:text-teal-400 dark:text-white transition duration-300">Projects</a>
+                    <a href="portfolio.html" class="hover:text-teal-600 dark:hover:text-teal-400 dark:text-white transition duration-300">Portfolio</a>
+                    <a href="blog.html" class="hover:text-teal-600 dark:hover:text-teal-400 dark:text-white transition duration-300">Blog</a>
+                    <a href="#contact" class="hover:text-teal-600 dark:hover:text-teal-400 dark:text-white transition duration-300">Contact</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-4 border-l pl-4 border-gray-300 dark:border-gray-700">
+                    <button id="darkModeToggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" aria-label="Toggle Dark Mode">
+                        <i class="fas fa-moon text-gray-600 dark:text-yellow-300 dark:hidden"></i>
+                        <i class="fas fa-sun text-yellow-300 hidden dark:inline"></i>
+                    </button>
+                    <div class="flex items-center space-x-2">
+                        <button id="lang-zh" class="text-sm px-2 py-1 rounded-md bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-white" aria-label="切換到中文">中文</button>
+                        <button id="lang-en" class="text-sm px-2 py-1 rounded-md bg-teal-500 text-white" aria-label="Switch to English">English</button>
+                    </div>
+                </div>
+                <button class="md:hidden focus:outline-none dark:text-white" aria-label="Open navigation menu">
+                    <i class="fas fa-bars text-teal-600 dark:text-teal-400 text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="about" class="relative overflow-hidden">
+        <div class="gradient-bg absolute inset-0 opacity-20"></div>
+        <div class="container mx-auto px-6 py-24 flex flex-col md:flex-row items-center justify-between relative z-10">
+            <div class="md:w-1/2 text-center md:text-left mb-12 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">Hello, I'm <span class="text-teal-600">Daniel</span></h1>
+                <p class="text-xl md:text-2xl text-gray-600 mb-8">A developer who loves new challenges</p>
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <a href="#projects" class="bg-white text-black px-6 py-3 rounded-lg shadow-lg hover:bg-gray-200 transition duration-300">View My Work</a>
+                    <a href="#contact" class="bg-white text-black  px-6 py-3 rounded-lg shadow-lg hover:bg-gray-200 transition duration-300">Contact Me</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="w-64 h-64 rounded-full overflow-hidden border-4 border-white shadow-xl">
+                    <img src="public/images/profile_pic.jpg" alt="Daniel's Profile" class="w-full h-full object-cover" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 relative">
+                <span class="relative z-10">About Me</span>
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-1 w-24 bg-teal-400 rounded-full"></span>
+            </h2>
+            <div class="max-w-3xl mx-auto text-center text-lg text-gray-600 leading-relaxed">
+                <p class="mb-6">I am a passionate developer who loves exploring new technologies and facing challenges. I find joy in the process of continuous learning and satisfaction through creative problem solving.</p>
+                <p>Whether developing applications, designing user experiences, or optimizing performance, I am committed to providing high-quality solutions. I believe in the power of technology to change how people live, and I'm excited to be part of this transformation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 relative">
+                <span class="relative z-10">My Skills</span>
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-1 w-24 bg-teal-400 rounded-full"></span>
+            </h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 max-w-4xl mx-auto mb-16">
+                <div class="skill-icon flex flex-col items-center transition duration-300 p-4 rounded-lg hover:bg-white hover:shadow-md">
+                    <i class="fab fa-html5 text-5xl text-orange-500 mb-3"></i>
+                    <span class="font-medium">HTML5</span>
+                </div>
+                <div class="skill-icon flex flex-col items-center transition duration-300 p-4 rounded-lg hover:bg-white hover:shadow-md">
+                    <i class="fab fa-css3-alt text-5xl text-blue-500 mb-3"></i>
+                    <span class="font-medium">CSS3</span>
+                </div>
+                <div class="skill-icon flex flex-col items-center transition duration-300 p-4 rounded-lg hover:bg-white hover:shadow-md">
+                    <i class="fab fa-js text-5xl text-yellow-500 mb-3"></i>
+                    <span class="font-medium">JavaScript</span>
+                </div>
+                <div class="skill-icon flex flex-col items-center transition duration-300 p-4 rounded-lg hover:bg-white hover:shadow-md">
+                    <i class="fab fa-react text-5xl text-blue-400 mb-3"></i>
+                    <span class="font-medium">React</span>
+                </div>
+                <div class="skill-icon flex flex-col items-center transition duration-300 p-4 rounded-lg hover:bg-white hover:shadow-md">
+                    <i class="fab fa-node-js text-5xl text-green-600 mb-3"></i>
+                    <span class="font-medium">Node.js</span>
+                </div>
+                <div class="skill-icon flex flex-col items-center transition duration-300 p-4 rounded-lg hover:bg-white hover:shadow-md">
+                    <i class="fab fa-python text-5xl text-blue-600 mb-3"></i>
+                    <span class="font-medium">Python</span>
+                </div>
+                <div class="skill-icon flex flex-col items-center transition duration-300 p-4 rounded-lg hover:bg-white hover:shadow-md">
+                    <i class="fas fa-database text-5xl text-gray-600 mb-3"></i>
+                    <span class="font-medium">Databases</span>
+                </div>
+                <div class="skill-icon flex flex-col items-center transition duration-300 p-4 rounded-lg hover:bg-white hover:shadow-md">
+                    <i class="fas fa-mobile-alt text-5xl text-teal-600 mb-3"></i>
+                    <span class="font-medium">Responsive Design</span>
+                </div>
+                <div class="skill-icon flex flex-col items-center transition duration-300 p-4 rounded-lg hover:bg-white hover:shadow-md">
+                    <i class="fas fa-code text-5xl text-gray-800 mb-3"></i>
+                    <span class="font-medium">C Language</span>
+                </div>
+            </div>
+            
+            <!-- Skill Proficiency Chart -->
+            <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-8">
+                <h3 class="text-2xl font-bold mb-6 text-center">Skill Proficiency</h3>
+                <div class="mb-10">
+                    <canvas id="skillChart" height="300"></canvas>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium">HTML/CSS</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium">JavaScript</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium">React</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium">Node.js</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium">Python</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium">C Language</span>
+                            <span>65%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 65%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 relative">
+                <span class="relative z-10">My Projects</span>
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-1 w-24 bg-teal-400 rounded-full"></span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-60 overflow-hidden">
+                        <img src="public/images/business.jpg" alt="E-Commerce Platform" class="w-full h-full object-cover object-center transform hover:scale-105 transition duration-500" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">E-Commerce Platform</h3>
+                        <p class="text-gray-600 mb-4">Full-stack e-commerce solution developed with React and Node.js, featuring payment integration and inventory management.</p>
+                        <div class="flex space-x-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">React</span>
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Node.js</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">MongoDB</span>
+                        </div>
+                        <a href="portfolio.html" class="text-teal-600 hover:text-teal-800 font-medium flex items-center">
+                            View Details <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-60 overflow-hidden">
+                        <img src="public/images/data visulization.jpg" alt="Data Visualization Dashboard" class="w-full h-full object-cover object-center transform hover:scale-105 transition duration-500" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Data Visualization Dashboard</h3>
+                        <p class="text-gray-600 mb-4">Real-time data analysis and visualization solution for enterprise clients, helping them make quick decisions.</p>
+                        <div class="flex space-x-2 mb-4">
+                            <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">JavaScript</span>
+                            <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">D3.js</span>
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded">Flask</span>
+                        </div>
+                        <a href="portfolio.html" class="text-teal-600 hover:text-teal-800 font-medium flex items-center">
+                            View Details <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-60 overflow-hidden">
+                        <img src="public/images/tracker.jpg" alt="Health Tracking App" class="w-full h-full object-cover object-center transform hover:scale-105 transition duration-500" loading="lazy">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Health Tracking App</h3>
+                        <p class="text-gray-600 mb-4">Mobile-first health and fitness tracking app that helps users set goals and monitor progress.</p>
+                        <div class="flex space-x-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">React Native</span>
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Firebase</span>
+                            <span class="bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded">GraphQL</span>
+                        </div>
+                        <a href="portfolio.html" class="text-teal-600 hover:text-teal-800 font-medium flex items-center">
+                            View Details <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 text-center">
+                <a href="portfolio.html" class="inline-block bg-gray-200 hover:bg-gray-300 text-gray-800 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 font-medium py-3 px-8 rounded-lg transition duration-300">
+                    View More Projects <i class="fas fa-external-link-alt ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 relative">
+                <span class="relative z-10">Contact Me</span>
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-1 w-24 bg-teal-400 rounded-full"></span>
+            </h2>
+            <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 p-8 bg-gradient-to-br from-teal-500 to-teal-700 text-black">
+                        <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-envelope mt-1 mr-4 text-teal-200"></i>
+                                <div>
+                                    <h4 class="font-medium">Email</h4>
+                                    <p>danielcheng1022@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt mt-1 mr-4 text-teal-200"></i>
+                                <div>
+                                    <h4 class="font-medium">Location</h4>
+                                    <p>Taichung, Taiwan</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-phone-alt mt-1 mr-4 text-teal-200"></i>
+                                <div>
+                                    <h4 class="font-medium">Phone</h4>
+                                    <p>+628 785 2389</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8 text-black">
+                            <h4 class="font-medium mb-4">Social Media</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://github.com/Daniel-PoChien" class="h-10 w-10 rounded-full bg-black bg-opacity-20 flex items-center justify-center hover:bg-opacity-40 transition duration-300">
+                                    <i class="fab fa-github text-black"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/chengdaniel1022/" class="h-10 w-10 rounded-full bg-black bg-opacity-20 flex items-center justify-center hover:bg-opacity-40 transition duration-300">
+                                    <i class="fab fa-linkedin-in text-black"></i>
+                                </a>
+                                <a href="https://twitter.com" class="h-10 w-10 rounded-full bg-black bg-opacity-20 flex items-center justify-center hover:bg-opacity-40 transition duration-300">
+                                    <i class="fab fa-x-twitter text-black"></i>
+                                </a>
+                                <a href="#" class="h-10 w-10 rounded-full bg-black bg-opacity-20 flex items-center justify-center hover:bg-opacity-40 transition duration-300">
+                                    <i class="fab fa-dribbble text-black"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 p-8">
+                        <h3 class="text-2xl font-bold mb-6 text-gray-800">Send Message</h3>
+                        <form id="contactForm" class="contact-form">
+                            <div class="mb-4">
+                                <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                                <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-gradient-to-r from-teal-500 to-teal-600 text-blue-400 py-4 rounded-lg font-medium hover:from-teal-600 hover:to-teal-700 transition duration-300 transform hover:scale-[1.02] shadow-lg flex items-center justify-center">
+                                <span>Send Message</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                            <div id="form-message" class="mt-4 text-center hidden"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 dark:bg-gray-900 text-white py-8 transition-colors duration-300">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="index_en.html" class="text-2xl font-bold text-white">Daniel</a>
+                    <p class="mt-2 text-gray-400">© 2025 All Rights Reserved</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#about" class="hover:text-teal-400 transition duration-300">About</a>
+                    <a href="#skills" class="hover:text-teal-400 transition duration-300">Skills</a>
+                    <a href="#projects" class="hover:text-teal-400 transition duration-300">Projects</a>
+                    <a href="portfolio.html" class="hover:text-teal-400 transition duration-300">Portfolio</a>
+                    <a href="blog.html" class="hover:text-teal-400 transition duration-300">Blog</a>
+                    <a href="#contact" class="hover:text-teal-400 transition duration-300">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="public/js/main.min.js"></script>
+    <script>
+        // 初始化設定
+        document.addEventListener('DOMContentLoaded', function() {
+            // 檢查URL參數
+            const urlParams = new URLSearchParams(window.location.search);
+            const langParam = urlParams.get('lang');
+            
+            // 如果URL中有語言參數，設置語言
+            if (langParam === 'zh') {
+                localStorage.setItem('preferredLanguage', 'zh');
+                window.location.href = 'index.html';
+                return;
+            }
+            
+            // 檢查localStorage中的語言偏好
+            const storedLang = localStorage.getItem('preferredLanguage');
+            if (storedLang === 'zh') {
+                window.location.href = 'index.html';
+                return;
+            }
+            
+            // 設置當前語言選擇
+            localStorage.setItem('preferredLanguage', 'en');
+            
+            // 暗黑模式切換
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            
+            // 檢查本地存儲中的暗黑模式偏好
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                document.documentElement.classList.add('dark');
+            }
+            
+            darkModeToggle.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark');
+                if (document.documentElement.classList.contains('dark')) {
+                    localStorage.setItem('darkMode', 'enabled');
+                } else {
+                    localStorage.setItem('darkMode', 'disabled');
+                }
+            });
+            
+            // 語言切換功能
+            const zhButton = document.getElementById('lang-zh');
+            const enButton = document.getElementById('lang-en');
+            
+            zhButton.addEventListener('click', function() {
+                localStorage.setItem('preferredLanguage', 'zh');
+                window.location.href = 'index.html';
+            });
+            
+            enButton.addEventListener('click', function() {
+                localStorage.setItem('preferredLanguage', 'en');
+                window.location.href = 'index_en.html';
+            });
+        });
+        
+        // 導航鏈接添加語言參數
+        document.addEventListener('DOMContentLoaded', function() {
+            // 修改所有外部頁面鏈接
+            const portfolioLinks = document.querySelectorAll('a[href="portfolio.html"]');
+            const blogLinks = document.querySelectorAll('a[href="blog.html"]');
+            
+            // 當前語言
+            const currentLang = localStorage.getItem('preferredLanguage') || 'en';
+            
+            // 更新作品集鏈接
+            portfolioLinks.forEach(link => {
+                link.href = `portfolio.html?lang=${currentLang}`;
+            });
+            
+            // 更新博客鏈接
+            blogLinks.forEach(link => {
+                link.href = `blog.html?lang=${currentLang}`;
+            });
+        });
+    </script>
+    
+    <!-- reCAPTCHA驗證與表單提交 -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 檢查reCAPTCHA
+            const recaptchaResponse = grecaptcha.getResponse();
+            if (!recaptchaResponse) {
+                const formMessage = document.getElementById('form-message');
+                formMessage.classList.remove('hidden');
+                formMessage.className = 'mt-4 text-center text-red-600 bg-red-100 p-3 rounded';
+                formMessage.textContent = 'Please complete the reCAPTCHA verification.';
+                return;
+            }
+            
+            const formData = new FormData(this);
+            // Add reCAPTCHA response to form data
+            formData.append('g-recaptcha-response', recaptchaResponse);
+            
+            const formMessage = document.getElementById('form-message');
+            const submitButton = this.querySelector('button[type="submit"]');
+            
+            // Disable submit button
+            submitButton.disabled = true;
+            submitButton.innerHTML = 'Sending...';
+            
+            fetch('/contact.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                formMessage.classList.remove('hidden');
+                
+                if (data.success) {
+                    // Success message
+                    formMessage.className = 'mt-4 text-center text-green-600 bg-green-100 p-3 rounded';
+                    formMessage.textContent = data.message;
+                    
+                    // Reset form
+                    document.getElementById('contactForm').reset();
+                    // Reset reCAPTCHA
+                    grecaptcha.reset();
+                } else {
+                    // Error message
+                    formMessage.className = 'mt-4 text-center text-red-600 bg-red-100 p-3 rounded';
+                    formMessage.textContent = data.errors.join(', ');
+                }
+                
+                // Re-enable submit button
+                submitButton.disabled = false;
+                submitButton.innerHTML = 'Send Message';
+            })
+            .catch(error => {
+                formMessage.classList.remove('hidden');
+                formMessage.className = 'mt-4 text-center text-red-600 bg-red-100 p-3 rounded';
+                formMessage.textContent = 'An error occurred while sending your message. Please try again later.';
+                
+                // Re-enable submit button
+                submitButton.disabled = false;
+                submitButton.innerHTML = 'Send Message';
+            });
+        });
+    </script>
+</body>
+</html>

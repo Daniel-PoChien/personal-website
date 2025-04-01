@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel的作品集 - 詳細項目展示</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="public/css/styles.min.css">
+</head>
+<body class="bg-gray-50 text-gray-800 transition-colors duration-300" id="body">
+    <!-- 標準導航欄 -->
+    <nav class="bg-white dark:bg-gray-900 shadow-md px-6 py-4 sticky top-0 z-50 transition-colors duration-300">
+        <div class="flex justify-between items-center">
+            <a href="index.html" class="flex items-center">
+                <span class="text-xl font-bold text-teal-600 dark:text-teal-400">Daniel</span>
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400">關於我</a>
+                <a href="index.html#skills" class="text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400">技能</a>
+                <a href="index.html#projects" class="text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400">項目</a>
+                <a href="portfolio.html" class="text-teal-600 dark:text-teal-400 font-medium">作品集</a>
+                <a href="blog.html" class="text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400">博客</a>
+                <a href="index.html#contact" class="text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400">聯繫我</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <!-- 語言切換 -->
+                <div class="flex items-center space-x-2 border-r pr-4 dark:border-gray-700">
+                    <button id="lang-zh" class="text-sm px-2 py-1 rounded-md bg-teal-500 text-white" aria-label="切換到中文">中文</button>
+                    <button id="lang-en" class="text-sm px-2 py-1 rounded-md bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-white" aria-label="Switch to English">English</button>
+                </div>
+                
+                <!-- 暗黑模式切換 -->
+                <button id="darkModeToggle" class="p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none transition-colors duration-300" aria-label="切換暗黑模式">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 作品集標題區 -->
+    <header class="py-16 bg-white dark:bg-gray-800 transition-colors duration-300">
+        <div class="container mx-auto px-6">
+            <h1 class="text-4xl md:text-5xl font-bold text-center text-gray-800 dark:text-white">我的作品集</h1>
+            <p class="text-xl text-center text-gray-600 dark:text-gray-300 mt-4 max-w-3xl mx-auto">精選項目詳情與技術細節展示</p>
+            
+            <!-- 作品類別過濾器 -->
+            <div class="flex flex-wrap justify-center mt-8 gap-2">
+                <button class="portfolio-filter px-4 py-2 rounded-full bg-teal-500 text-white hover:bg-teal-600 active" data-category="all">全部</button>
+                <button class="portfolio-filter px-4 py-2 rounded-full bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-white hover:bg-teal-500 hover:text-white dark:hover:bg-teal-600" data-category="web">Web應用</button>
+                <button class="portfolio-filter px-4 py-2 rounded-full bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-white hover:bg-teal-500 hover:text-white dark:hover:bg-teal-600" data-category="mobile">移動應用</button>
+                <button class="portfolio-filter px-4 py-2 rounded-full bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-white hover:bg-teal-500 hover:text-white dark:hover:bg-teal-600" data-category="design">設計項目</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 作品集詳情 -->
+    <section class="py-16 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+        <div class="container mx-auto px-6">
+            <!-- 項目1：電子商務平台 -->
+            <div class="portfolio-item mb-20" data-category="web">
+                <div class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-xl transition-all duration-300">
+                    <div class="md:flex">
+                        <div class="md:w-1/2">
+                            <div class="h-80 overflow-hidden">
+                                <img src="public/images/business.jpg" alt="電子商務平台" class="w-full h-full object-cover object-center transition duration-500 hover:scale-105">
+                            </div>
+                        </div>
+                        <div class="md:w-1/2 p-8">
+                            <div class="flex items-center mb-4">
+                                <span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-300 px-2 py-1 rounded-full">Web應用</span>
+                                <span class="text-xs text-gray-500 dark:text-gray-400 ml-4">2024年完成</span>
+                            </div>
+                            <h2 class="text-2xl font-bold mb-4 text-gray-800 dark:text-white">電子商務平台</h2>
+                            <p class="text-gray-600 dark:text-gray-300 mb-6">全棧電子商務解決方案，提供完整的購物體驗、支付集成和實時庫存管理。支持多語言和多貨幣，適合國際市場。</p>
+                            
+                            <div class="mb-6">
+                                <h3 class="font-semibold text-gray-800 dark:text-white mb-2">技術詳情</h3>
+                                <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                                    <li class="flex items-center">
+                                        <svg class="w-4 h-4 mr-2 text-teal-500 dark:text-teal-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                        前端：React, Redux, TailwindCSS
+                                    </li>
+                                    <li class="flex items-center">
+                                        <svg class="w-4 h-4 mr-2 text-teal-500 dark:text-teal-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                        後端：Node.js, Express, MongoDB
+                                    </li>
+                                    <li class="flex items-center">
+                                        <svg class="w-4 h-4 mr-2 text-teal-500 dark:text-teal-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                        支付：Stripe, PayPal集成
+                                    </li>
+                                    <li class="flex items-center">
+                                        <svg class="w-4 h-4 mr-2 text-teal-500 dark:text-teal-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                        部署：Docker, AWS
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="flex space-x-4">
+                                <a href="https://example.com/ecommerce" class="px-6 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition duration-300 flex items-center">
+                                    <i class="fas fa-globe mr-2"></i> <span class="visit-text">訪問網站</span>
+                                </a>
+                                <a href="https://github.com/example/ecommerce" class="px-6 py-2 border border-teal-600 text-teal-600 dark:text-teal-400 dark:border-teal-400 rounded-lg hover:bg-teal-50 dark:hover:bg-gray-700 transition duration-300 flex items-center">
+                                    <i class="fab fa-github mr-2"></i> <span class="source-text">源代碼</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 項目2：數據可視化儀表板 -->
+            <div class="portfolio-item mb-20" data-category="web">
+                <div class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-xl transition-all duration-300">
+                    <div class="md:flex flex-row-reverse">
+                        <div class="md:w-1/2">
+                            <div class="h-80 overflow-hidden">
+                                <img src="public/images/data visulization.jpg" alt="數據可視化儀表板" class="w-full h-full object-cover object-center transition duration-500 hover:scale-105">
+                            </div>
+                        </div>
+                        <div class="md:w-1/2 p-8">
+                            <div class="flex items-center mb-4">
+                                <span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-300 px-2 py-1 rounded-full">Web應用</span>
+                                <span class="text-xs text-gray-500 dark:text-gray-400 ml-4">2023年完成</span>
+                            </div>
+                            <h2 class="text-2xl font-bold mb-4 text-gray-800 dark:text-white">數據可視化儀表板</h2>
+                            <p class="text-gray-600 dark:text-gray-300 mb-6">為企業客戶設計的實時數據分析和可視化解決方案，幫助用戶快速理解複雜數據，輕鬆做出決策。支持多種圖表類型和交互式數據探索。</p>
+                            
+                            <div class="mb-6">
+                                <h3 class="font-semibold text-gray-800 dark:text-white mb-2">技術詳情</h3>
+                                <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                                    <li class="flex items-center">
+                                        <svg class="w-4 h-4 mr-2 text-teal-500 dark:text-teal-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                        前端：Vue.js, D3.js, Tailwind CSS
+                                    </li>
+                                    <li class="flex items-center">
+                                        <svg class="w-4 h-4 mr-2 text-teal-500 dark:text-teal-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                        後端：Python, Flask, PostgreSQL
+                                    </li>
+                                    <li class="flex items-center">
+                                        <svg class="w-4 h-4 mr-2 text-teal-500 dark:text-teal-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                        數據處理：Pandas, NumPy
+                                    </li>
+                                    <li class="flex items-center">
+                                        <svg class="w-4 h-4 mr-2 text-teal-500 dark:text-teal-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                        部署：Heroku, Netlify
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="flex space-x-4">
+                                <a href="https://example.com/dashboard" class="px-6 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition duration-300 flex items-center">
+                                    <i class="fas fa-desktop mr-2"></i> <span class="demo-text">在線演示</span>
+                                </a>
+                                <a href="https://example.com/dashboard-case" class="px-6 py-2 border border-teal-600 text-teal-600 dark:text-teal-400 dark:border-teal-400 rounded-lg hover:bg-teal-50 dark:hover:bg-gray-700 transition duration-300 flex items-center">
+                                    <i class="fas fa-file-alt mr-2"></i> <span class="case-text">案例研究</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 項目3：健康追踪應用 -->
+            <div class="portfolio-item mb-20" data-category="mobile">
+                <div class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-xl transition-all duration-300">
+                    <div class="md:flex">
+                        <div class="md:w-1/2">
+                            <div class="h-80 overflow-hidden">
+                                <img src="public/images/tracker.jpg" alt="健康追踪應用" class="w-full h-full object-cover object-center transition duration-500 hover:scale-105">
+                            </div>
+                        </div>
+                        <div class="md:w-1/2 p-8">
+                            <div class="flex items-center mb-4">
+                                <span class="text-xs bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-300 px-2 py-1 rounded-full">移動應用</span>
+                                <span class="text-xs text-gray-500 dark:text-gray-400 ml-4">2023年完成</span>
+                            </div>
+                            <h2 class="text-2xl font-bold mb-4 text-gray-800 dark:text-white">健康追踪應用</h2>
+                            <p class="text-gray-600 dark:text-gray-300 mb-6">移動優先的健康和健身追踪應用，幫助用戶設定目標、監控進展並保持積極性。提供個性化的健康建議和數據分析。</p>
+                            
+                            <div class="mb-6">
+                                <h3 class="font-semibold text-gray-800 dark:text-white mb-2">技術詳情</h3>
+                                <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                                    <li class="flex items-center">
+                                        <svg class="w-4 h-4 mr-2 text-teal-500 dark:text-teal-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                        前端：React Native, Redux
+                                    </li>
+                                    <li class="flex items-center">
+                                        <svg class="w-4 h-4 mr-2 text-teal-500 dark:text-teal-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                        後端：Firebase, GraphQL
+                                    </li>
+                                    <li class="flex items-center">
+                                        <svg class="w-4 h-4 mr-2 text-teal-500 dark:text-teal-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                        健康API：HealthKit (iOS), Google Fit (Android)
+                                    </li>
+                                    <li class="flex items-center">
+                                        <svg class="w-4 h-4 mr-2 text-teal-500 dark:text-teal-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                        發布：App Store, Google Play
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="flex space-x-4">
+                                <a href="https://apps.apple.com/example" class="px-6 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition duration-300 flex items-center">
+                                    <i class="fas fa-mobile-alt mr-2"></i> <span>App Store</span>
+                                </a>
+                                <a href="https://play.google.com/store/example" class="px-6 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition duration-300 flex items-center">
+                                    <i class="fab fa-google-play mr-2"></i> <span>Google Play</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA 區域 -->
+    <section class="py-16 bg-gradient-to-r from-teal-500 to-teal-600 dark:from-teal-700 dark:to-teal-800 transition-colors duration-300">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold text-black mb-6">有項目想合作？</h2>
+            <p class="text-teal-100 mb-8 max-w-2xl mx-auto">無論您需要開發新產品、改進現有系統還是尋求技術咨詢，我都樂意提供幫助</p>
+            <a href="index.html#contact" class="bg-white text-teal-600 px-8 py-3 rounded-lg font-medium hover:bg-teal-50 transition transform hover:scale-105 shadow-lg inline-flex items-center">
+                <span>聯繫我</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- 頁腳 -->
+    <footer class="bg-gray-800 dark:bg-gray-900 text-white py-8 transition-colors duration-300">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="index.html" class="text-2xl font-bold text-white">Daniel</a>
+                    <p class="mt-2 text-gray-400">© 2025 版權所有</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="index.html#about" class="hover:text-teal-400 transition duration-300">關於我</a>
+                    <a href="index.html#skills" class="hover:text-teal-400 transition duration-300">技能</a>
+                    <a href="index.html#projects" class="hover:text-teal-400 transition duration-300">項目</a>
+                    <a href="portfolio.html" class="text-teal-400 transition duration-300">作品集</a>
+                    <a href="blog.html" class="hover:text-teal-400 transition duration-300">博客</a>
+                    <a href="index.html#contact" class="hover:text-teal-400 transition duration-300">聯繫我</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 暗黑模式和過濾JS -->
+    <script>
+        // 語言檢測與重定向
+        function checkLanguagePreference() {
+            // 檢查URL參數
+            const urlParams = new URLSearchParams(window.location.search);
+            const langParam = urlParams.get('lang');
+            
+            // 如果URL中有語言參數，設置語言
+            if (langParam === 'en') {
+                document.documentElement.classList.add('en');
+                // 更改文本元素
+                translateToEnglish();
+                // 更新按鈕樣式
+                document.getElementById('lang-zh').classList.remove('bg-teal-500', 'text-white');
+                document.getElementById('lang-zh').classList.add('bg-gray-200', 'text-gray-800', 'dark:bg-gray-700', 'dark:text-white');
+                document.getElementById('lang-en').classList.remove('bg-gray-200', 'text-gray-800', 'dark:bg-gray-700', 'dark:text-white');
+                document.getElementById('lang-en').classList.add('bg-teal-500', 'text-white');
+                return;
+            }
+            
+            // 檢查localStorage中的語言偏好
+            const storedLang = localStorage.getItem('preferredLanguage');
+            if (storedLang === 'en') {
+                document.documentElement.classList.add('en');
+                // 更改文本元素
+                translateToEnglish();
+                // 更新按鈕樣式
+                document.getElementById('lang-zh').classList.remove('bg-teal-500', 'text-white');
+                document.getElementById('lang-zh').classList.add('bg-gray-200', 'text-gray-800', 'dark:bg-gray-700', 'dark:text-white');
+                document.getElementById('lang-en').classList.remove('bg-gray-200', 'text-gray-800', 'dark:bg-gray-700', 'dark:text-white');
+                document.getElementById('lang-en').classList.add('bg-teal-500', 'text-white');
+            }
+        }
+        
+        // 簡單的英文翻譯實現
+        function translateToEnglish() {
+            // 標題和導航
+            document.querySelector('title').textContent = "Daniel's Portfolio - Detailed Project Showcase";
+            document.querySelectorAll('nav a').forEach(link => {
+                if (link.textContent === '關於我') link.textContent = 'About';
+                else if (link.textContent === '技能') link.textContent = 'Skills';
+                else if (link.textContent === '項目') link.textContent = 'Projects';
+                else if (link.textContent === '作品集') link.textContent = 'Portfolio';
+                else if (link.textContent === '博客') link.textContent = 'Blog';
+                else if (link.textContent === '聯繫我') link.textContent = 'Contact';
+            });
+            
+            // 作品集標題區
+            document.querySelector('header h1').textContent = 'My Portfolio';
+            document.querySelector('header p').textContent = 'Showcasing selected projects with technical details';
+            
+            // 過濾器按鈕
+            document.querySelectorAll('.portfolio-filter').forEach(btn => {
+                if (btn.textContent === '全部') btn.textContent = 'All';
+                else if (btn.textContent === 'Web應用') btn.textContent = 'Web Apps';
+                else if (btn.textContent === '移動應用') btn.textContent = 'Mobile Apps';
+                else if (btn.textContent === '設計項目') btn.textContent = 'Design Projects';
+            });
+            
+            // 項目詳情翻譯
+            // 這裡可以添加更多細節項目的翻譯
+            
+            // 頁腳
+            document.querySelectorAll('footer a').forEach(link => {
+                if (link.textContent === '關於我') link.textContent = 'About';
+                else if (link.textContent === '技能') link.textContent = 'Skills';
+                else if (link.textContent === '項目') link.textContent = 'Projects';
+                else if (link.textContent === '作品集') link.textContent = 'Portfolio';
+                else if (link.textContent === '博客') link.textContent = 'Blog';
+                else if (link.textContent === '聯繫我') link.textContent = 'Contact';
+            });
+            
+            // 翻譯按鈕文本
+            document.querySelectorAll('.visit-text').forEach(el => el.textContent = 'Visit Website');
+            document.querySelectorAll('.source-text').forEach(el => el.textContent = 'Source Code');
+            document.querySelectorAll('.demo-text').forEach(el => el.textContent = 'Live Demo');
+            document.querySelectorAll('.case-text').forEach(el => el.textContent = 'Case Study');
+        }
+        
+        // 執行語言檢測
+        document.addEventListener('DOMContentLoaded', checkLanguagePreference);
+        
+        // 暗黑模式切換
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        
+        // 檢查本地存儲中的暗黑模式偏好
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.documentElement.classList.add('dark');
+        }
+        
+        darkModeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            if (document.documentElement.classList.contains('dark')) {
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+        
+        // 語言切換功能
+        const zhButton = document.getElementById('lang-zh');
+        const enButton = document.getElementById('lang-en');
+        
+        zhButton.addEventListener('click', function() {
+            localStorage.setItem('preferredLanguage', 'zh');
+            // 刷新頁面應用中文
+            window.location.href = 'portfolio.html?lang=zh';
+        });
+        
+        enButton.addEventListener('click', function() {
+            localStorage.setItem('preferredLanguage', 'en');
+            // 刷新頁面應用英文
+            window.location.href = 'portfolio.html?lang=en';
+        });
+        
+        // 作品集過濾
+        const portfolioFilters = document.querySelectorAll('.portfolio-filter');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        portfolioFilters.forEach(filter => {
+            filter.addEventListener('click', () => {
+                // 移除所有過濾器的活躍狀態
+                portfolioFilters.forEach(f => {
+                    f.classList.remove('active', 'bg-teal-500', 'text-white');
+                    f.classList.add('bg-gray-200', 'text-gray-800', 'dark:bg-gray-700', 'dark:text-white');
+                });
+                
+                // 設定當前過濾器為活躍
+                filter.classList.add('active', 'bg-teal-500', 'text-white');
+                filter.classList.remove('bg-gray-200', 'text-gray-800', 'dark:bg-gray-700', 'dark:text-white');
+                
+                const category = filter.getAttribute('data-category');
+                
+                // 過濾作品集項目
+                portfolioItems.forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                        item.style.display = 'block';
+                        // 添加淡入動畫
+                        item.style.opacity = '0';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                        }, 10);
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

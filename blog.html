@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel的博客 - 分享專業見解</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="public/css/styles.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 transition-colors duration-300" id="body">
+    <!-- 標準導航欄 -->
+    <nav class="bg-white dark:bg-gray-900 shadow-md px-6 py-4 sticky top-0 z-50 transition-colors duration-300">
+        <div class="flex justify-between items-center">
+            <a href="index.html" class="flex items-center">
+                <span class="text-xl font-bold text-teal-600 dark:text-teal-400">Daniel</span>
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400">關於我</a>
+                <a href="index.html#skills" class="text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400">技能</a>
+                <a href="index.html#projects" class="text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400">項目</a>
+                <a href="portfolio.html" class="text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400">作品集</a>
+                <a href="blog.html" class="text-teal-600 dark:text-teal-400 font-medium">博客</a>
+                <a href="index.html#contact" class="text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400">聯繫我</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <!-- 語言切換 -->
+                <div class="flex items-center space-x-2 border-r pr-4 dark:border-gray-700">
+                    <button id="lang-zh" class="text-sm px-2 py-1 rounded-md bg-teal-500 text-white" aria-label="切換到中文">中文</button>
+                    <button id="lang-en" class="text-sm px-2 py-1 rounded-md bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-white" aria-label="Switch to English">English</button>
+                </div>
+                
+                <!-- 暗黑模式切換 -->
+                <button id="darkModeToggle" class="p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none transition-colors duration-300" aria-label="切換暗黑模式">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 博客標題區 -->
+    <header class="py-16 bg-white dark:bg-gray-800 transition-colors duration-300">
+        <div class="container mx-auto px-6">
+            <h1 class="text-4xl md:text-5xl font-bold text-center text-gray-800 dark:text-white">Daniel的技術博客</h1>
+            <p class="text-xl text-center text-gray-600 dark:text-gray-300 mt-4 max-w-3xl mx-auto">分享我在開發、設計和技術領域的見解與經驗</p>
+            
+            <!-- 博客類別過濾器 -->
+            <div class="flex flex-wrap justify-center mt-8 gap-2">
+                <button class="category-filter px-4 py-2 rounded-full bg-teal-500 text-white hover:bg-teal-600 active" data-category="all">全部</button>
+                <button class="category-filter px-4 py-2 rounded-full bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-white hover:bg-teal-500 hover:text-white dark:hover:bg-teal-600" data-category="web-dev">Web開發</button>
+                <button class="category-filter px-4 py-2 rounded-full bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-white hover:bg-teal-500 hover:text-white dark:hover:bg-teal-600" data-category="design">設計理念</button>
+                <button class="category-filter px-4 py-2 rounded-full bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-white hover:bg-teal-500 hover:text-white dark:hover:bg-teal-600" data-category="tech">新技術</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 博客文章列表 -->
+    <section class="py-16 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 文章1 -->
+                <article class="blog-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl" data-category="web-dev">
+                    <img src="public/images/blog-1.jpg" alt="React性能優化" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-300 px-2 py-1 rounded-full">Web開發</span>
+                            <span class="text-xs text-gray-500 dark:text-gray-400 ml-auto">2025年3月15日</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">React應用性能優化的10個關鍵技巧</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">探索如何通過組件懶加載、記憶化和虛擬化技術顯著提升您的React應用性能...</p>
+                        <a href="blog-post.html?id=1" class="text-teal-600 dark:text-teal-400 hover:text-teal-800 dark:hover:text-teal-300 font-medium flex items-center group">
+                            閱讀更多 
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1 transform transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 文章2 -->
+                <article class="blog-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl" data-category="design">
+                    <img src="public/images/blog-2.jpg" alt="設計系統" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="text-xs bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-300 px-2 py-1 rounded-full">設計理念</span>
+                            <span class="text-xs text-gray-500 dark:text-gray-400 ml-auto">2025年2月28日</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">構建有效的設計系統：從零到規模化</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">詳細介紹如何建立一套完整的設計系統，實現設計與開發的無縫銜接，提高團隊效率...</p>
+                        <a href="blog-post.html?id=2" class="text-teal-600 dark:text-teal-400 hover:text-teal-800 dark:hover:text-teal-300 font-medium flex items-center group">
+                            閱讀更多 
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1 transform transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 文章3 -->
+                <article class="blog-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl" data-category="tech">
+                    <img src="public/images/blog-3.jpg" alt="AI技術" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="text-xs bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-300 px-2 py-1 rounded-full">新技術</span>
+                            <span class="text-xs text-gray-500 dark:text-gray-400 ml-auto">2025年1月10日</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">AI驅動的開發工具：未來已來</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">如何利用最新的AI技術提升開發效率，從智能代碼補全到自動化測試，探索人工智能如何改變開發流程...</p>
+                        <a href="blog-post.html?id=3" class="text-teal-600 dark:text-teal-400 hover:text-teal-800 dark:hover:text-teal-300 font-medium flex items-center group">
+                            閱讀更多 
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1 transform transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 文章4 -->
+                <article class="blog-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl" data-category="web-dev">
+                    <img src="public/images/blog-4.jpg" alt="TypeScript技巧" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-300 px-2 py-1 rounded-full">Web開發</span>
+                            <span class="text-xs text-gray-500 dark:text-gray-400 ml-auto">2024年12月5日</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">TypeScript高級類型技巧與最佳實踐</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">深入探討TypeScript的高級類型系統，包括條件類型、映射類型及實用工具類型，提升程式碼的類型安全性...</p>
+                        <a href="blog-post.html?id=4" class="text-teal-600 dark:text-teal-400 hover:text-teal-800 dark:hover:text-teal-300 font-medium flex items-center group">
+                            閱讀更多 
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1 transform transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 文章5 -->
+                <article class="blog-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl" data-category="design">
+                    <img src="public/images/blog-5.jpg" alt="用戶體驗設計" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="text-xs bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-300 px-2 py-1 rounded-full">設計理念</span>
+                            <span class="text-xs text-gray-500 dark:text-gray-400 ml-auto">2024年11月18日</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">微互動設計：提升用戶體驗的細節之美</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">探討如何通過精心設計的微互動來提升用戶體驗，讓產品更加生動、直觀且具有感染力...</p>
+                        <a href="blog-post.html?id=5" class="text-teal-600 dark:text-teal-400 hover:text-teal-800 dark:hover:text-teal-300 font-medium flex items-center group">
+                            閱讀更多 
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1 transform transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 文章6 -->
+                <article class="blog-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl" data-category="tech">
+                    <img src="public/images/blog-6.jpg" alt="邊緣計算" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="text-xs bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-300 px-2 py-1 rounded-full">新技術</span>
+                            <span class="text-xs text-gray-500 dark:text-gray-400 ml-auto">2024年10月22日</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">邊緣計算與5G：下一代應用的基礎架構</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">解析邊緣計算與5G技術如何協同工作，為物聯網、AR/VR等創新應用提供強大的技術支持...</p>
+                        <a href="blog-post.html?id=6" class="text-teal-600 dark:text-teal-400 hover:text-teal-800 dark:hover:text-teal-300 font-medium flex items-center group">
+                            閱讀更多 
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1 transform transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- 分頁控制 -->
+            <div class="mt-12 flex justify-center">
+                <div class="inline-flex rounded-md shadow-sm">
+                    <a href="blog.html" class="px-4 py-2 text-sm font-medium text-gray-500 bg-white dark:bg-gray-800 dark:text-gray-300 border border-gray-300 dark:border-gray-700 rounded-l-md hover:bg-gray-100 dark:hover:bg-gray-700">上一頁</a>
+                    <a href="blog.html" class="px-4 py-2 text-sm font-medium text-white bg-teal-600 border border-teal-600 hover:bg-teal-700">1</a>
+                    <a href="blog.html?page=2" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white dark:bg-gray-800 dark:text-gray-300 border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700">2</a>
+                    <a href="blog.html?page=2" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white dark:bg-gray-800 dark:text-gray-300 border border-gray-300 dark:border-gray-700 rounded-r-md hover:bg-gray-100 dark:hover:bg-gray-700">下一頁</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 訂閱區域 -->
+    <section class="py-16 bg-teal-600 dark:bg-teal-800 transition-colors duration-300">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-white mb-6">訂閱我的博客更新</h2>
+                <p class="text-teal-100 mb-8">獲取最新的技術資訊、教程和行業趨勢，直接發送到您的收件箱</p>
+                <form class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <div class="flex-grow max-w-md">
+                        <input type="email" placeholder="您的電子郵箱" class="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-white">
+                    </div>
+                    <button type="submit" class="bg-white text-teal-600 px-6 py-3 rounded-lg font-medium hover:bg-teal-50 transition transform hover:scale-[1.02] shadow-lg flex items-center justify-center">
+                        <span>訂閱</span>
+                        <i class="fas fa-paper-plane ml-2"></i>
+                    </button>
+                </form>
+                <p class="text-teal-100 text-sm mt-4">我們尊重您的隱私，不會發送垃圾郵件</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁腳 -->
+    <footer class="bg-gray-800 dark:bg-gray-900 text-white py-8 transition-colors duration-300">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="index.html" class="text-2xl font-bold text-white">Daniel</a>
+                    <p class="mt-2 text-gray-400">© 2025 版權所有</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="index.html#about" class="hover:text-teal-400 transition duration-300">關於我</a>
+                    <a href="index.html#skills" class="hover:text-teal-400 transition duration-300">技能</a>
+                    <a href="index.html#projects" class="hover:text-teal-400 transition duration-300">項目</a>
+                    <a href="portfolio.html" class="hover:text-teal-400 transition duration-300">作品集</a>
+                    <a href="blog.html" class="text-teal-400 transition duration-300">博客</a>
+                    <a href="index.html#contact" class="hover:text-teal-400 transition duration-300">聯繫我</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 暗黑模式和類別過濾JS -->
+    <script src="public/js/main.min.js"></script>
+    <script>
+        // 語言檢測與重定向
+        function checkLanguagePreference() {
+            // 檢查URL參數
+            const urlParams = new URLSearchParams(window.location.search);
+            const langParam = urlParams.get('lang');
+            
+            // 如果URL中有語言參數，設置語言
+            if (langParam === 'en') {
+                document.documentElement.classList.add('en');
+                // 更改文本元素
+                translateToEnglish();
+                // 更新按鈕樣式
+                document.getElementById('lang-zh').classList.remove('bg-teal-500', 'text-white');
+                document.getElementById('lang-zh').classList.add('bg-gray-200', 'text-gray-800', 'dark:bg-gray-700', 'dark:text-white');
+                document.getElementById('lang-en').classList.remove('bg-gray-200', 'text-gray-800', 'dark:bg-gray-700', 'dark:text-white');
+                document.getElementById('lang-en').classList.add('bg-teal-500', 'text-white');
+                return;
+            }
+            
+            // 檢查localStorage中的語言偏好
+            const storedLang = localStorage.getItem('preferredLanguage');
+            if (storedLang === 'en') {
+                document.documentElement.classList.add('en');
+                // 更改文本元素
+                translateToEnglish();
+                // 更新按鈕樣式
+                document.getElementById('lang-zh').classList.remove('bg-teal-500', 'text-white');
+                document.getElementById('lang-zh').classList.add('bg-gray-200', 'text-gray-800', 'dark:bg-gray-700', 'dark:text-white');
+                document.getElementById('lang-en').classList.remove('bg-gray-200', 'text-gray-800', 'dark:bg-gray-700', 'dark:text-white');
+                document.getElementById('lang-en').classList.add('bg-teal-500', 'text-white');
+            }
+        }
+        
+        // 簡單的英文翻譯實現
+        function translateToEnglish() {
+            // 標題和導航
+            document.querySelector('title').textContent = "Daniel's Blog - Tech Insights & Reflections";
+            document.querySelectorAll('nav a').forEach(link => {
+                if (link.textContent === '關於我') link.textContent = 'About';
+                else if (link.textContent === '技能') link.textContent = 'Skills';
+                else if (link.textContent === '項目') link.textContent = 'Projects';
+                else if (link.textContent === '作品集') link.textContent = 'Portfolio';
+                else if (link.textContent === '博客') link.textContent = 'Blog';
+                else if (link.textContent === '聯繫我') link.textContent = 'Contact';
+            });
+            
+            // 博客標題區
+            document.querySelector('header h1').textContent = 'My Blog';
+            document.querySelector('header p').textContent = 'Sharing thoughts on technology, development, and more';
+            
+            // 翻譯博客文章
+            document.querySelectorAll('.blog-card').forEach(card => {
+                const category = card.querySelector('.category');
+                if (category.textContent === '前端開發') category.textContent = 'Frontend Development';
+                else if (category.textContent === '後端開發') category.textContent = 'Backend Development';
+                else if (category.textContent === 'UI/UX') category.textContent = 'UI/UX';
+                else if (category.textContent === '最佳實踐') category.textContent = 'Best Practices';
+                else if (category.textContent === '技術趨勢') category.textContent = 'Tech Trends';
+                else if (category.textContent === '個人成長') category.textContent = 'Personal Growth';
+            });
+            
+            // 翻譯閱讀更多按鈕
+            document.querySelectorAll('.read-more').forEach(button => {
+                button.textContent = 'Read More';
+            });
+            
+            // 翻譯分頁
+            document.querySelector('.pagination .prev').textContent = 'Previous';
+            document.querySelector('.pagination .next').textContent = 'Next';
+            
+            // 頁腳
+            document.querySelectorAll('footer a').forEach(link => {
+                if (link.textContent === '關於我') link.textContent = 'About';
+                else if (link.textContent === '技能') link.textContent = 'Skills';
+                else if (link.textContent === '項目') link.textContent = 'Projects';
+                else if (link.textContent === '作品集') link.textContent = 'Portfolio';
+                else if (link.textContent === '博客') link.textContent = 'Blog';
+                else if (link.textContent === '聯繫我') link.textContent = 'Contact';
+            });
+        }
+        
+        // 執行語言檢測
+        document.addEventListener('DOMContentLoaded', checkLanguagePreference);
+        
+        // 暗黑模式切換
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        
+        // 檢查本地存儲中的暗黑模式偏好
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.documentElement.classList.add('dark');
+        }
+        
+        darkModeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            if (document.documentElement.classList.contains('dark')) {
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+        
+        // 語言切換功能
+        const zhButton = document.getElementById('lang-zh');
+        const enButton = document.getElementById('lang-en');
+        
+        zhButton.addEventListener('click', function() {
+            localStorage.setItem('preferredLanguage', 'zh');
+            // 刷新頁面應用中文
+            window.location.href = 'blog.html?lang=zh';
+        });
+        
+        enButton.addEventListener('click', function() {
+            localStorage.setItem('preferredLanguage', 'en');
+            // 刷新頁面應用英文
+            window.location.href = 'blog.html?lang=en';
+        });
+        
+        // 分頁功能
+        document.querySelectorAll('.pagination a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                // 在實際應用中，這裡會處理分頁邏輯
+                console.log('分頁被點擊:', this.textContent);
+            });
+        });
+    </script>
+</body>
+</html>
