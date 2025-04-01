@@ -48,7 +48,7 @@ app.post('/contact.php', async (req, res) => {
     const { name, email, message, 'g-recaptcha-response': recaptchaResponse } = req.body;
     
     // 驗證reCAPTCHA
-    const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY || '6LeI_QUrAAAAAErIE1NG-YZHhBrKL9wjzv9RCoa4';
+    const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY || RECAPTCHA_SECRET_KEY;
     console.log('驗證reCAPTCHA...');
     
     const recaptchaVerification = await axios.post(
@@ -74,15 +74,15 @@ app.post('/contact.php', async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: process.env.EMAIL_USER || 'danielcheng1022@gmail.com',
-        pass: process.env.EMAIL_PASS || '48582798'
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
       }
     });
     
     // 郵件選項
     const mailOptions = {
-      from: process.env.EMAIL_USER || 'danielcheng1022@gmail.com',
-      to: process.env.RECIPIENT_EMAIL || 'danielcheng1022@gmail.com',
+      from: process.env.EMAIL_USER ,
+      to: process.env.RECIPIENT_EMAIL,
       subject: `來自個人網站的新消息 - ${name}`,
       text: `
         姓名: ${name}
