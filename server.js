@@ -10,13 +10,13 @@ require('dotenv').config();
 
 // 初始化Express應用
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3003;
 
 // 中間件
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? ['https://*.vercel.app', 'https://*.your-domain.com'] // 替換為您的域名
-    : 'http://localhost:3000'
+    ? ['https://personal-website-2utv6xvfj-danielcheng1022-gmailcoms-projects.vercel.app'] 
+    : 'http://localhost:3003'
 }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -27,7 +27,18 @@ app.get('/favicon.ico', (req, res) => {
 });
 
 // 靜態文件服務
-app.use(express.static(path.join(__dirname, '/')));
+app.use(express.static(path.join(__dirname)));
+
+// 處理根路由
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// 處理其他HTML頁面
+app.get('/:page.html', (req, res) => {
+  const page = req.params.page;
+  res.sendFile(path.join(__dirname, `${page}.html`));
+});
 
 // 處理表單提交
 app.post('/contact.php', async (req, res) => {
@@ -37,7 +48,7 @@ app.post('/contact.php', async (req, res) => {
     const { name, email, message, 'g-recaptcha-response': recaptchaResponse } = req.body;
     
     // 驗證reCAPTCHA
-    const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY || 'YOUR_RECAPTCHA_SECRET_KEY';
+    const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY || '6LeI_QUrAAAAAErIE1NG-YZHhBrKL9wjzv9RCoa4';
     console.log('驗證reCAPTCHA...');
     
     const recaptchaVerification = await axios.post(
@@ -63,15 +74,15 @@ app.post('/contact.php', async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: process.env.EMAIL_USER || 'your_email@gmail.com',
-        pass: process.env.EMAIL_PASS || 'your_email_password'
+        user: process.env.EMAIL_USER || 'danielcheng1022@gmail.com',
+        pass: process.env.EMAIL_PASS || '48582798'
       }
     });
     
     // 郵件選項
     const mailOptions = {
-      from: process.env.EMAIL_USER || 'your_email@gmail.com',
-      to: process.env.RECIPIENT_EMAIL || 'recipient@example.com',
+      from: process.env.EMAIL_USER || 'danielcheng1022@gmail.com',
+      to: process.env.RECIPIENT_EMAIL || 'danielcheng1022@gmail.com',
       subject: `來自個人網站的新消息 - ${name}`,
       text: `
         姓名: ${name}
@@ -112,12 +123,6 @@ app.get('/:page', (req, res) => {
   
   // 否則發送請求的頁面
   res.sendFile(path.join(__dirname, page));
-});
-
-// 主頁路由
-app.get('/', (req, res) => {
-  console.log('訪問主頁');
-  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // 導出 app 以供 Vercel 使用
