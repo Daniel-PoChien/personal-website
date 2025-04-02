@@ -462,7 +462,7 @@
             submitButton.disabled = true;
             submitButton.innerHTML = '發送中...';
             
-            fetch('/contact.php', {
+            fetch('/api/contact', {
                 method: 'POST',
                 body: formData
             })

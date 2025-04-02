@@ -1,0 +1,43 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "public/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/contact.php",
+      "dest": "server.js"
+    },
+    {
+      "src": "/contact_en.php",
+      "dest": "server.js"
+    },
+    {
+      "src": "/public/(.*)",
+      "dest": "/public/$1"
+    },
+    {
+      "src": "^/(.*\\.(js|css|jpg|jpeg|png|gif|ico|svg|webp))$",
+      "dest": "/$1"
+    },
+    {
+      "src": "^/(.*\\.(html))$",
+      "dest": "/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "server.js"
+    }
+  ]
+}

@@ -5,6 +5,7 @@ const path = require('path');
 const nodemailer = require('nodemailer');
 const axios = require('axios');
 const fs = require('fs');
+const http = require('http');
 // 添加dotenv支持
 require('dotenv').config();
 
@@ -15,7 +16,7 @@ const PORT = process.env.PORT || 3003;
 // 中間件
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? ['https://personal-website-2utv6xvfj-danielcheng1022-gmailcoms-projects.vercel.app'] 
+    ? ['https://personal-website-2utv6xvfj-danielcheng1022-gmailcoms-projects.vercel.app', 'https://personal-website-danielcheng1022.vercel.app', 'https://daniel-personal-website.vercel.app'] 
     : 'http://localhost:3003'
 }));
 app.use(bodyParser.json());
@@ -48,7 +49,14 @@ app.post('/contact.php', async (req, res) => {
     const { name, email, message, 'g-recaptcha-response': recaptchaResponse } = req.body;
     
     // 驗證reCAPTCHA
-    const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY || RECAPTCHA_SECRET_KEY;
+    const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
+    if (!recaptchaSecret) {
+      console.error('Missing reCAPTCHA secret key!');
+      return res.json({
+        success: false,
+        errors: ['Server configuration error']
+      });
+    }
     console.log('驗證reCAPTCHA...');
     
     const recaptchaVerification = await axios.post(
@@ -127,6 +135,13 @@ app.get('/:page', (req, res) => {
 
 // 導出 app 以供 Vercel 使用
 module.exports = app;
+
+// 使用一致的日誌輸出方式
+app.listen = function() {
+  const server = http.createServer(this);
+  console.log(`Server starting in ${process.env.NODE_ENV || 'development'} mode`);
+  return server.listen.apply(server, arguments);
+};
 
 // 僅在直接運行時啟動服務器
 if (require.main === module) {

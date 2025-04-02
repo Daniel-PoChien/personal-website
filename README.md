@@ -1,63 +1,64 @@
-# Daniel的個人網站
+# Personal Website
 
-這是一個使用HTML、CSS和JavaScript構建的個人網站和作品集，並使用Node.js作為後端服務器。
+A personal portfolio website built with HTML, CSS, and JavaScript, with a Node.js backend.
 
-## 功能
+## Deployment Guide for Vercel
 
-- 響應式設計，適應所有屏幕尺寸
-- 暗黑模式支持
-- 多語言支持（中文和英文）
-- 作品集展示
-- 博客部分
-- 聯繫表單與郵件集成
-- reCAPTCHA表單驗證
+### Prerequisites
+- A Vercel account
+- Google reCAPTCHA account with site key and secret key
+- Gmail account with App Password (not your regular password)
 
-## 技術棧
+### Setup Environment Variables on Vercel
+When deploying to Vercel, make sure to set the following environment variables in the Vercel project settings:
 
-- 前端：HTML5, CSS3, JavaScript, TailwindCSS
-- 後端：Node.js, Express
-- 其他：nodemailer, reCAPTCHA
+1. `NODE_ENV`: Set to "production"
+2. `RECAPTCHA_SECRET_KEY`: Your reCAPTCHA secret key
+3. `EMAIL_USER`: Your Gmail address
+4. `EMAIL_PASS`: Your Gmail App Password (not your regular password)
+5. `RECIPIENT_EMAIL`: Email where you want to receive contact form submissions
 
-## 安裝
+### Steps to Deploy
 
-1. 克隆此存儲庫
-```
-git clone https://github.com/your-username/personal-website.git
-cd personal-website
-```
+1. Push your code to GitHub
+2. Connect Vercel to your GitHub repository
+3. Configure the build settings:
+   - Build Command: `npm run vercel-build`
+   - Output Directory: `.`
+   - Install Command: `npm install`
+4. Add environment variables in the Vercel project settings
+5. Deploy
 
-2. 安裝依賴項
-```
+### Troubleshooting
+
+#### CORS Issues
+If you're facing CORS issues, make sure your Vercel domain is correctly listed in the CORS configuration in `server.js`.
+
+#### reCAPTCHA Not Working
+- Verify that your reCAPTCHA site key (in HTML) and secret key (in environment variables) are correct
+- Make sure the domain is added to your reCAPTCHA settings in Google Console
+
+#### Email Not Working
+- Check if your Gmail app password is correctly set
+- Ensure you're using an app password and not your regular Gmail password
+- Verify that Gmail's "less secure apps" setting is properly configured
+
+## Local Development
+
+### Installation
+```bash
 npm install
 ```
 
-3. 配置環境變量
-複製`.env.example`文件到`.env`並填寫您的詳細信息：
-```
-cp .env.example .env
-```
-然後編輯`.env`文件並添加您的詳細信息。
-
-## 運行應用
-
-### 開發模式
-
-```
+### Running the Server
+```bash
 npm run dev
 ```
 
-### 生產模式
+This will start the development server at http://localhost:3003
 
-```
-npm start
-```
-
-應用將在 http://localhost:3003 運行（除非在.env文件中指定了其他端口）。
-
-## 部署
-
-此應用可以部署到任何支持Node.js的主機，如Heroku，Vercel或AWS。
-
-## 聯繫
-
-如有任何問題或建議，請聯繫[danielcheng1022@gmail.com](mailto:danielcheng1022@gmail.com)。
+## Technologies Used
+- HTML/CSS/JavaScript
+- Node.js/Express
+- Nodemailer
+- Google reCAPTCHA v2
