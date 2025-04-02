@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 3003;
 // 中間件
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? ['https://personal-website-2utv6xvfj-danielcheng1022-gmailcoms-projects.vercel.app'] 
+    ? ['https://personal-website-puce-pi.vercel.app/'] 
     : 'http://localhost:3003'
 }));
 app.use(bodyParser.json());
@@ -48,7 +48,7 @@ app.post('/contact.php', async (req, res) => {
     const { name, email, message, 'g-recaptcha-response': recaptchaResponse } = req.body;
     
     // 驗證reCAPTCHA
-    const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY || RECAPTCHA_SECRET_KEY;
+    const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
     console.log('驗證reCAPTCHA...');
     
     const recaptchaVerification = await axios.post(
